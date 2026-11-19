@@ -45,6 +45,14 @@ library-book-demand-prediction/
 3. Run `python scripts/train_model.py`
 4. Run `streamlit run dashboard/app.py`
 
+## 🌐 Deploy (Streamlit Community Cloud)
+1. Sign in at [share.streamlit.io](https://share.streamlit.io) with GitHub
+2. **New app** → repository `parthpawar1117/library-book-demand-prediction`, branch `main`
+3. Main file path: `dashboard/app.py` → **Deploy**
+
+`scikit-learn` is pinned to `1.8.0`, the version `models/best_model.pkl` was saved with, so the
+hosted app loads the exact trained model.
+
 ## 💡 Features
 - ✅ Predicts demand as High / Medium / Low
 - ✅ Interactive Streamlit dashboard
