@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LibraIQ · Library Book Demand Prediction</title>
+  <meta name="description" content="Predict whether a university library book will be in High, Medium or Low demand, with the model's reasoning shown. Live demo of Parth Pawar's LibraIQ ML project.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232c3e50'/%3E%3Crect x='8' y='7' width='5' height='18' rx='1' fill='%2327ae60'/%3E%3Crect x='14' y='10' width='5' height='15' rx='1' fill='%23f39c12'/%3E%3Crect x='20' y='13' width='5' height='12' rx='1' fill='%23e74c3c'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="eyebrow">LibraIQ · ML project · Vijaybhoomi University</p>
+      <h1>Will this book be in demand?</h1>
+      <p class="lede">University libraries buy and shelve books blind. LibraIQ predicts a book's demand as <b class="tag high">High</b> <b class="tag medium">Medium</b> or <b class="tag low">Low</b> from its subject, semester, past borrowing and course relevance, and shows why.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card predict" aria-labelledby="predict-h">
+      <h2 id="predict-h">Try a prediction</h2>
+      <form id="form">
+        <label>Subject <select id="subject"></select></label>
+        <label>Semester <output id="semester-out">3</output>
+          <input id="semester" type="range" min="1" max="8" value="3"></label>
+        <label>Past borrow count <output id="borrow-out">60</output>
+          <input id="borrow" type="range" min="0" max="200" value="60"></label>
+        <fieldset>
+          <legend>Required for a course?</legend>
+          <label class="inline"><input type="radio" name="rel" value="1" checked> Yes</label>
+          <label class="inline"><input type="radio" name="rel" value="0"> No</label>
+        </fieldset>
+      </form>
+      <div id="result" class="result" aria-live="polite"></div>
+    </section>
+
+    <section class="card" aria-labelledby="rules-h">
+      <h2 id="rules-h">What the model learned</h2>
+      <p class="muted">A decision tree trained on 400 books and tested on 100 it never saw. These are its exact rules: subject and semester turned out not to matter.</p>
+      <pre id="rules" class="rules"></pre>
+      <p id="acc" class="muted small"></p>
+    </section>
+
+    <section class="card" aria-labelledby="data-h">
+      <h2 id="data-h">The dataset</h2>
+      <p class="muted" id="data-note"></p>
+      <div class="grid2">
+        <div><h3>Demand levels</h3><div id="demand-bars"></div></div>
+        <div><h3>Demand by subject</h3><div id="subject-bars"></div></div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="models-h">
+      <h2 id="models-h">Five models compared (Python, scikit-learn)</h2>
+      <p class="muted">Results from the original training script on a held-out 20% split. Rows of each confusion matrix are the true level, columns the predicted level (High · Low · Medium).</p>
+      <div id="models" class="models"></div>
+    </section>
+
+    <section class="card note">
+      <h2>Honest notes</h2>
+      <ul>
+        <li>The 500 books are synthetic: demand was generated from borrow count and course relevance, which is why tree models reach 100%. Real library data would be noisier.</li>
+        <li>This page runs entirely in your browser. The in-browser tree was retrained in JavaScript on the same CSV; the five-model table shows the original Python results.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap foot">Parth Niraj Pawar · <a href="https://github.com/parthpawar1117/library-book-demand-prediction">Source on GitHub</a></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
