@@ -1,5 +1,10 @@
 # 📚 Library Book Demand Prediction System
 
+<a href="https://libraiq.vercel.app"><img src="https://img.shields.io/badge/%E2%96%B6%20Live%20demo-libraiq.vercel.app-27ae60?style=for-the-badge&logo=vercel&logoColor=white" alt="Live demo"></a>
+
+**Try it live:** https://libraiq.vercel.app
+
+
 ![Python](https://img.shields.io/badge/Python-3.14-blue)
 ![ML](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange)
 ![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red)
