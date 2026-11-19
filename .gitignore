@@ -6,11 +6,10 @@ __pycache__/
 venv/
 .env/
 
-# Model files (generated)
-models/*.pkl
+# Model files: the trained model and metrics are committed so the hosted
+# dashboard can load them (see README).
 
-# Generated data
-data/*.csv
+# Data: library_data.csv is committed for the hosted dashboard.
 
 # Jupyter / Colab
 .ipynb_checkpoints/
