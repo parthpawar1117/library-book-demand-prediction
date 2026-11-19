@@ -1,0 +1,371 @@
+{
+ "subjects": [
+  "Biology",
+  "Computer Science",
+  "Economics",
+  "Management",
+  "Mathematics",
+  "Physics"
+ ],
+ "features": [
+  "subject",
+  "semester",
+  "past_borrow_count",
+  "course_relevance"
+ ],
+ "tree": {
+  "leaf": false,
+  "feature": "past_borrow_count",
+  "threshold": 40.5,
+  "n": 400,
+  "left": {
+   "leaf": true,
+   "label": "Low",
+   "n": 75,
+   "counts": {
+    "Low": 75
+   }
+  },
+  "right": {
+   "leaf": false,
+   "feature": "past_borrow_count",
+   "threshold": 124.5,
+   "n": 325,
+   "left": {
+    "leaf": true,
+    "label": "Medium",
+    "n": 172,
+    "counts": {
+     "Medium": 172
+    }
+   },
+   "right": {
+    "leaf": false,
+    "feature": "course_relevance",
+    "threshold": 0.5,
+    "n": 153,
+    "left": {
+     "leaf": true,
+     "label": "Medium",
+     "n": 72,
+     "counts": {
+      "Medium": 72
+     }
+    },
+    "right": {
+     "leaf": true,
+     "label": "High",
+     "n": 81,
+     "counts": {
+      "High": 81
+     }
+    }
+   }
+  }
+ },
+ "rules": [
+  "if past_borrow_count ≤ 40.5:",
+  "    → Low  (75 books)",
+  "else:",
+  "    if past_borrow_count ≤ 124.5:",
+  "        → Medium  (172 books)",
+  "    else:",
+  "        if course_relevance ≤ 0.5:",
+  "            → Medium  (72 books)",
+  "        else:",
+  "            → High  (81 books)"
+ ],
+ "split": {
+  "train": 400,
+  "test": 100,
+  "seed": 42
+ },
+ "testAccuracy": 1,
+ "confusion": {
+  "labels": [
+   "High",
+   "Low",
+   "Medium"
+  ],
+  "matrix": [
+   [
+    17,
+    0,
+    0
+   ],
+   [
+    0,
+    30,
+    0
+   ],
+   [
+    0,
+    0,
+    53
+   ]
+  ]
+ },
+ "dataset": {
+  "rows": 500,
+  "demand": {
+   "High": 98,
+   "Medium": 297,
+   "Low": 105
+  },
+  "subjects": {
+   "Physics": 84,
+   "Biology": 92,
+   "Mathematics": 74,
+   "Computer Science": 96,
+   "Management": 72,
+   "Economics": 82
+  },
+  "bySubjectDemand": {
+   "Biology": {
+    "High": 19,
+    "Low": 21,
+    "Medium": 52
+   },
+   "Computer Science": {
+    "High": 16,
+    "Low": 18,
+    "Medium": 62
+   },
+   "Economics": {
+    "High": 14,
+    "Low": 25,
+    "Medium": 43
+   },
+   "Management": {
+    "High": 17,
+    "Low": 13,
+    "Medium": 42
+   },
+   "Mathematics": {
+    "High": 10,
+    "Low": 11,
+    "Medium": 53
+   },
+   "Physics": {
+    "High": 22,
+    "Low": 17,
+    "Medium": 45
+   }
+  },
+  "sample": [
+   {
+    "book_id": "1",
+    "subject": "Physics",
+    "semester": "8",
+    "past_borrow_count": "183",
+    "course_relevance": "1",
+    "demand_level": "High"
+   },
+   {
+    "book_id": "2",
+    "subject": "Biology",
+    "semester": "3",
+    "past_borrow_count": "169",
+    "course_relevance": "1",
+    "demand_level": "High"
+   },
+   {
+    "book_id": "3",
+    "subject": "Biology",
+    "semester": "8",
+    "past_borrow_count": "74",
+    "course_relevance": "1",
+    "demand_level": "Medium"
+   },
+   {
+    "book_id": "4",
+    "subject": "Mathematics",
+    "semester": "3",
+    "past_borrow_count": "68",
+    "course_relevance": "1",
+    "demand_level": "Medium"
+   },
+   {
+    "book_id": "5",
+    "subject": "Computer Science",
+    "semester": "7",
+    "past_borrow_count": "167",
+    "course_relevance": "1",
+    "demand_level": "High"
+   },
+   {
+    "book_id": "6",
+    "subject": "Computer Science",
+    "semester": "5",
+    "past_borrow_count": "34",
+    "course_relevance": "0",
+    "demand_level": "Low"
+   },
+   {
+    "book_id": "7",
+    "subject": "Management",
+    "semester": "8",
+    "past_borrow_count": "132",
+    "course_relevance": "1",
+    "demand_level": "High"
+   },
+   {
+    "book_id": "8",
+    "subject": "Economics",
+    "semester": "8",
+    "past_borrow_count": "34",
+    "course_relevance": "1",
+    "demand_level": "Low"
+   },
+   {
+    "book_id": "9",
+    "subject": "Biology",
+    "semester": "5",
+    "past_borrow_count": "141",
+    "course_relevance": "0",
+    "demand_level": "Medium"
+   },
+   {
+    "book_id": "10",
+    "subject": "Mathematics",
+    "semester": "5",
+    "past_borrow_count": "163",
+    "course_relevance": "1",
+    "demand_level": "High"
+   },
+   {
+    "book_id": "11",
+    "subject": "Economics",
+    "semester": "2",
+    "past_borrow_count": "52",
+    "course_relevance": "1",
+    "demand_level": "Medium"
+   },
+   {
+    "book_id": "12",
+    "subject": "Economics",
+    "semester": "6",
+    "past_borrow_count": "79",
+    "course_relevance": "0",
+    "demand_level": "Medium"
+   }
+  ]
+ },
+ "python": {
+  "Logistic Regression": {
+   "Accuracy": 0.99,
+   "F1-score": 0.9899,
+   "Precision": 0.9902,
+   "Recall": 0.99,
+   "Confusion Matrix": [
+    [
+     17,
+     0,
+     1
+    ],
+    [
+     0,
+     17,
+     0
+    ],
+    [
+     0,
+     0,
+     65
+    ]
+   ]
+  },
+  "Random Forest": {
+   "Accuracy": 1,
+   "F1-score": 1,
+   "Precision": 1,
+   "Recall": 1,
+   "Confusion Matrix": [
+    [
+     18,
+     0,
+     0
+    ],
+    [
+     0,
+     17,
+     0
+    ],
+    [
+     0,
+     0,
+     65
+    ]
+   ]
+  },
+  "Decision Tree": {
+   "Accuracy": 1,
+   "F1-score": 1,
+   "Precision": 1,
+   "Recall": 1,
+   "Confusion Matrix": [
+    [
+     18,
+     0,
+     0
+    ],
+    [
+     0,
+     17,
+     0
+    ],
+    [
+     0,
+     0,
+     65
+    ]
+   ]
+  },
+  "Support Vector Machine": {
+   "Accuracy": 0.85,
+   "F1-score": 0.8514,
+   "Precision": 0.8531,
+   "Recall": 0.85,
+   "Confusion Matrix": [
+    [
+     11,
+     0,
+     7
+    ],
+    [
+     0,
+     17,
+     0
+    ],
+    [
+     8,
+     0,
+     57
+    ]
+   ]
+  },
+  "K-Nearest Neighbors": {
+   "Accuracy": 0.8,
+   "F1-score": 0.7905,
+   "Precision": 0.7841,
+   "Recall": 0.8,
+   "Confusion Matrix": [
+    [
+     6,
+     0,
+     12
+    ],
+    [
+     0,
+     17,
+     0
+    ],
+    [
+     8,
+     0,
+     57
+    ]
+   ]
+  }
+ }
+}
